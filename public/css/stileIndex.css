@@ -1,0 +1,203 @@
+#map {
+    width: 100vw;
+    height: 100vh;
+}
+
+#createRoute {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+}
+
+#cancelRoute {
+    position: absolute;
+    bottom: 100px;
+    right: 40px;
+    visibility: hidden;
+}
+
+#createClip {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+}
+
+#listDD {
+    position: absolute;
+    top: 40px;
+    right: 120px;
+}
+
+#dropDownVideoList {
+    width: 400px;
+    position: absolute;
+    right: 120px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+#btnList {
+    margin: 5px;
+}
+
+#btnPrev {
+    float: left;
+    visibility: visible;
+}
+
+#btnNext {
+    float: right;
+    visibility: visible;
+}
+
+#prevClip {
+    height: 35px;
+    width: 60px;
+    padding: 0px;
+    font-size: 20px;
+}
+
+#nextClip {
+    height: 35px;
+    width: 60px;
+    padding: 0px;
+    font-size: 20px;
+}
+
+#reachThePlace{
+    padding: 4px;
+    height: 35px;
+}
+
+#btPop {
+    font-size: 13px;
+    width: 50px;
+    height: 20px;
+    text-align: center;
+    padding: 0px;
+}
+
+#align{
+    text-align: center;
+}
+
+#dropdownMenuButton {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+}
+
+#dropDownLogout {
+    width: 250px;
+    height: 100px;
+    text-align: center;
+}
+
+.dropdown-divider {
+    margin: 10px;
+}
+
+#tipoDiAccesso {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#err {
+    text-align: center;
+    color: red;
+}
+
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+}
+
+.modal-dialog {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    text-align: left;
+}
+
+.modal-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.tform {
+    font-weight: bold;
+}
+
+#clipform {
+    font-size: 15px;
+}
+
+.left {
+    margin-left: 10px;
+    float: left;
+    width: 200px;
+    padding: 0px;
+  }
+  
+.right {
+    margin-right: 10px;
+    float: right;
+    width: 200px;
+    padding: 0px;
+  }
+
+#startButton{
+    /*
+    border: 1px solid black;
+    font-size: 16px;
+    padding-top: 2px;
+    padding-bottom: 4px;
+    color: white;
+    background-color: darkgreen;
+    */
+    width: 160px;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+}
+
+#stopButton{
+    /*
+    border: 1px solid black;
+    font-size: 16px;
+    padding-top: 2px;
+    padding-bottom: 4px;
+    color: white;
+    background-color: red;
+    */
+    width: 160px;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+}
+
+#videoRec td {
+    text-align: center;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#containerVideoRec {
+    text-align: center;
+
+}
+
+
+.bottom {
+    clear: both;
+    padding-top: 10px;
+}
+      
