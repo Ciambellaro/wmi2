@@ -51,6 +51,14 @@ function play() {
     document.getElementById("btnNext").style.visibility = "visible";
   }
 
+  if (index == 0) {
+    $("#prevClip").attr("disabled", true);
+  }
+
+  if (index + 1 >= tmpList.length) {
+    $("#nextClip").attr("disabled", true);
+  }
+
   //autoplay del video all'apertura del modal
   $('#ModalVideoPlayer').on('shown.bs.modal', function (e) {
     $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");  // set the video src to autoplay and not to show related video.
@@ -83,6 +91,12 @@ function play() {
       }
 
     }
+    console.log("index: " + index + "LEN: " + tmpList.length);
+    if (index + 1 < tmpList.length) {
+      $("#nextClip").attr("disabled", false);
+    } else {
+      $("#nextClip").attr("disabled", true);
+    }
     $videoSrc = "https://www.youtube.com/embed/" + tmpList[index]; //aggiorna il link con il primo video della lista filtrata
     $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
   });
@@ -90,8 +104,6 @@ function play() {
   // CAMBIA LA LISTA DA CUI IFRAME PRENDE I VIDEO FILTRATA PER SCOPO
   $("select.filterLan").change(function () {
     var selectedPurpose = $(this).children("option:selected").val();
-    console.log("Filtra per: " + filterLan);
-    console.log("FILTERLAN PRIMA: " + filterLan);
     tmpList = [];
     switch (selectedPurpose) {
       case "eng":
@@ -115,8 +127,6 @@ function play() {
         index = 0;
     }
 
-    console.log("FILTERLAN DOPO: " + filterLan);
-
     for (var i = 0; i < lista.length; i++) {
       var split = lista[i].split(":");
       var s = lista[i].split("#");
@@ -125,28 +135,33 @@ function play() {
       }
 
     }
+    if (index + 1 < tmpList.length) {
+      $("#nextClip").attr("disabled", false);
+    } else {
+      $("#nextClip").attr("disabled", true);
+    }
     $videoSrc = "https://www.youtube.com/embed/" + tmpList[index]; //aggiorna il link con il primo video della lista filtrata
     $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
   });
 
   $('#prevClip').click(function () {
-    if (index == 0) {
-      alert("Questa è la prima clip !");
-    } else {
+    $("#nextClip").attr("disabled", false);
       index--;
+      if(index-1 <= 0) $("#prevClip").attr("disabled", true);
       $videoSrc = "https://www.youtube.com/embed/" + tmpList[index];
       $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
-    }
+    
   });
 
   $('#nextClip').click(function () {
     console.log("Index: " + index + "List dim: " + tmpList.length);
+    $("#prevClip").attr("disabled", false);
     if (index + 1 < tmpList.length) {
       index++;
+      if (index+1 == tmpList.length) $("#nextClip").attr("disabled", true);
+      console.log("INDEX DOPO: "+ index);
       $videoSrc = "https://www.youtube.com/embed/" + tmpList[index];
       $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
-    } else {
-      alert("Questa è l'ultima clip !");
     }
   });
 
