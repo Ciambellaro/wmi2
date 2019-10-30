@@ -28,6 +28,21 @@ var discovered = [];
     accessToken: 'pk.eyJ1IjoiaXBlenp1IiwiYSI6ImNrMG54Ym1rZjA0OWszbm8weTlyNGlnd3cifQ.Ra3q6EDY1jvEeGFFcFHdAQ'
 }).addTo(map);*/
 
+var user = sessionStorage.getItem("user");
+var tipo = sessionStorage.getItem("tipo");
+
+$(document).ready(function() {
+    document.getElementById('tipoDiUser').innerHTML = "USERNAME: " + user;
+    if(tipo == "guida") {
+        document.getElementById('tipoDiAccesso').innerHTML = "Accesso effettuato come GUIDA";
+        document.getElementById('RouteDiv').innerHTML = "";
+        document.getElementById('listDD').innerHTML = "";
+    } else if(tipo == "turista") {
+        document.getElementById('tipoDiAccesso').innerHTML = "Accesso effettuato come TURISTA";
+        document.getElementById('ClipDiv').innerHTML = "";
+    }
+});
+
 L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', {
     attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a>',
     minZoom: 1,
@@ -334,9 +349,18 @@ map.on('moveend', function (e) {
                             }
 
                             if (el.tags["addr:city"] && el.tags["addr:country"] && el.tags["addr:housenumber"] && el.tags["addr:postcode"] && el.tags["addr:street"]) {
-                                marker.bindPopup("Questo posto e': " + el.tags.name + "<br>" + el.tags["addr:street"] + ", " + el.tags["addr:housenumber"] + ", " + el.tags["addr:postcode"] + " " + el.tags["addr:city"] + " " + el.tags["addr:country"] + "<br><div id='align'><button id='btPop' type='button' class='btn btn-primary' onclick={getJson('" + posizioneOLC + "')}>PLAY</button></div>");
+                                if(tipo == "guida") { //se ha acceduto una guida, non si vede il bottone play
+                                    marker.bindPopup(el.tags.name + "<br>" + el.tags["addr:street"] + ", " + el.tags["addr:housenumber"] + ", " + el.tags["addr:postcode"] + " " + el.tags["addr:city"] + " " + el.tags["addr:country"]);
+                                } else if(tipo == "turista") {
+                                    marker.bindPopup(el.tags.name + "<br>" + el.tags["addr:street"] + ", " + el.tags["addr:housenumber"] + ", " + el.tags["addr:postcode"] + " " + el.tags["addr:city"] + " " + el.tags["addr:country"] + "<br><div id='align'><button id='btPop' type='button' class='btn btn-primary' onclick={getJson('" + posizioneOLC + "')}>PLAY</button></div>");
+                                }
                             } else {
-                                marker.bindPopup("Questo posto e': " + el.tags.name + "<br><div id='align'><button id='btPop' type='button' class='btn btn-primary' onclick={getJson('" + posizioneOLC + "')}>PLAY</button></div>");
+                                if(tipo == "guida") { //se ha acceduto una guida, non si vede il bottone play
+                                    marker.bindPopup(el.tags.name);
+                                } else if(tipo == "turista") {
+                                    marker.bindPopup(el.tags.name + "<br><div id='align'><button id='btPop' type='button' class='btn btn-primary' onclick={getJson('" + posizioneOLC + "')}>PLAY</button></div>");
+                                }
+                                
                             }
 
                             if (yetdiscovered == false) {

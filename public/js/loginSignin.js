@@ -26,7 +26,9 @@ $("#loginForm").submit(function (event) {
             var split = response.message.split("-");
             var nomeUtente = split[1];
             var tipoUtente = split[2];
-            // creazione di session con i valori qui sopra...
+            //valori che servono in /map
+            sessionStorage.setItem('user', nomeUtente);
+            sessionStorage.setItem('tipo', tipoUtente);
             location.assign("/map");
         }
     });
