@@ -35,6 +35,21 @@ $(document).ready(function() {
     }
 });
 
+var user = sessionStorage.getItem("user");
+var tipo = sessionStorage.getItem("tipo");
+
+$(document).ready(function() {
+    document.getElementById('tipoDiUser').innerHTML = "USERNAME: " + user;
+    if(tipo == "guida") {
+        document.getElementById('tipoDiAccesso').innerHTML = "Accesso effettuato come GUIDA";
+        document.getElementById('RouteDiv').innerHTML = "";
+        document.getElementById('listDD').innerHTML = "";
+    } else if(tipo == "turista") {
+        document.getElementById('tipoDiAccesso').innerHTML = "Accesso effettuato come TURISTA";
+        document.getElementById('ClipDiv').innerHTML = "";
+    }
+});
+
 L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', {
     attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a>',
     minZoom: 1,
@@ -326,7 +341,6 @@ map.on('moveend', function (e) {
                                 } else if(tipo == "turista") {
                                     marker.bindPopup(el.tags.name + "<br><div id='align'><button id='btPop' type='button' class='btn btn-primary' onclick={getJson('" + posizioneOLC + "')}>PLAY</button></div>");
                                 }
-
                             }
 
                             if (yetdiscovered == false) {

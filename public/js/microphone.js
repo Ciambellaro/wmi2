@@ -28,11 +28,9 @@ function addClip() {
                 position: 'bottom-center',
                 icon: 'success'
             });
-        
-
 
         document.getElementById("createClip").className = "btn btn-warning btn-circle btn-lg";
-        document.getElementById("clipIcon").className = "glyphicon glyphicon-forward";
+        document.getElementById("clipIcon").className = "glyphicon glyphicon-plus";
 
     }
 }    

@@ -82,23 +82,28 @@
     text-align: center;
 }
 
-#dropdownMenuButton {
+#dropdownMenuButton {   /*bottone blu del login sulla mappa*/
     position: absolute;
     top: 40px;
     right: 40px;
 }
 
-#dropDownLogout {
+#dropDownLogout {   /*menu dropdown che scende quando si clicca il bottone blu*/
     width: 250px;
     height: 145px;
     text-align: center;
 }
 
-.dropdown-divider {
+.dropdown-divider {   /*divisore all'interno del dropdown Logout*/
     margin: 10px;
 }
 
-#tipoDiAccesso {
+#tipoDiUser {    /*USERNAME: tizio*/
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#tipoDiAccesso {    /*Accesso effettuato come GUIDA/TURISTA*/
     margin-top: 10px;
     margin-bottom: 10px;
 }
