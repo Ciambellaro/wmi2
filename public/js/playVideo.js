@@ -97,6 +97,7 @@ function play() {
     } else {
       $("#nextClip").attr("disabled", true);
     }
+    $("#prevClip").attr("disabled", true);
     $videoSrc = "https://www.youtube.com/embed/" + tmpList[index]; //aggiorna il link con il primo video della lista filtrata
     $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
   });
@@ -140,6 +141,7 @@ function play() {
     } else {
       $("#nextClip").attr("disabled", true);
     }
+    $("#prevClip").attr("disabled", true);
     $videoSrc = "https://www.youtube.com/embed/" + tmpList[index]; //aggiorna il link con il primo video della lista filtrata
     $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
   });
@@ -147,7 +149,7 @@ function play() {
   $('#prevClip').click(function () {
     $("#nextClip").attr("disabled", false);
       index--;
-      if(index-1 <= 0) $("#prevClip").attr("disabled", true);
+      if(index-1 < 0) $("#prevClip").attr("disabled", true);
       $videoSrc = "https://www.youtube.com/embed/" + tmpList[index];
       $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
     

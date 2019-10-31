@@ -20,13 +20,20 @@ var activeRoute = false;
 var clipAround = [];
 var discovered = [];
 
-//carica e inizializza la mappa base
-/*L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1IjoiaXBlenp1IiwiYSI6ImNrMG54Ym1rZjA0OWszbm8weTlyNGlnd3cifQ.Ra3q6EDY1jvEeGFFcFHdAQ'
-}).addTo(map);*/
+var user = sessionStorage.getItem("user");
+var tipo = sessionStorage.getItem("tipo");
+
+$(document).ready(function() {
+    document.getElementById('tipoDiUser').innerHTML = "USERNAME: " + user;
+    if(tipo == "guida") {
+        document.getElementById('tipoDiAccesso').innerHTML = "Accesso effettuato come GUIDA";
+        document.getElementById('RouteDiv').innerHTML = "";
+        document.getElementById('listDD').innerHTML = "";
+    } else if(tipo == "turista") {
+        document.getElementById('tipoDiAccesso').innerHTML = "Accesso effettuato come TURISTA";
+        document.getElementById('ClipDiv').innerHTML = "";
+    }
+});
 
 L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', {
     attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a>',
@@ -209,32 +216,6 @@ function backToLogin() {
     window.location.assign("/");
 }
 
-/*
-//FUNZIONI DI GOOGLE MAPS PER LOCALIZZARE I NEARBY PLACES
-function initialize() {
-  console.log("in init: " + position.lat);
-  var pyrmont = new google.maps.LatLng({lat: position.lat, lng: position.lng});
-
-  var request = {
-    location: pyrmont,
-      radius: '500',
-      type: ['restaurant']
-  };
-
-  service = new google.maps.places.PlacesService(document.createElement('div'));
-  service.nearbySearch(request, callback);
-}
-
-function callback(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-      for (var i = 0; i < results.length; i++) {
-        var nearbyMarker = L.marker([results[0].geometry.location.lat(),results[0].geometry.location.lng()]);
-        nearbyMarker.addTo(layerGroup);
-      }
-    }
-}
-*/
-
 map.on('locationfound', onLocationFound);
 map.on('locationerror', onLocationError);
 
@@ -334,9 +315,18 @@ map.on('moveend', function (e) {
                             }
 
                             if (el.tags["addr:city"] && el.tags["addr:country"] && el.tags["addr:housenumber"] && el.tags["addr:postcode"] && el.tags["addr:street"]) {
-                                marker.bindPopup("Questo posto e': " + el.tags.name + "<br>" + el.tags["addr:street"] + ", " + el.tags["addr:housenumber"] + ", " + el.tags["addr:postcode"] + " " + el.tags["addr:city"] + " " + el.tags["addr:country"] + "<br><div id='align'><button id='btPop' type='button' class='btn btn-primary' onclick={getJson('" + posizioneOLC + "')}>PLAY</button></div>");
+                                if(tipo == "guida") { //se ha acceduto una guida, non si vede il bottone play
+                                    marker.bindPopup(el.tags.name + "<br>" + el.tags["addr:street"] + ", " + el.tags["addr:housenumber"] + ", " + el.tags["addr:postcode"] + " " + el.tags["addr:city"] + " " + el.tags["addr:country"]);
+                                } else if(tipo == "turista") {
+                                    marker.bindPopup(el.tags.name + "<br>" + el.tags["addr:street"] + ", " + el.tags["addr:housenumber"] + ", " + el.tags["addr:postcode"] + " " + el.tags["addr:city"] + " " + el.tags["addr:country"] + "<br><div id='align'><button id='btPop' type='button' class='btn btn-primary' onclick={getJson('" + posizioneOLC + "')}>PLAY</button></div>");
+                                }
                             } else {
-                                marker.bindPopup("Questo posto e': " + el.tags.name + "<br><div id='align'><button id='btPop' type='button' class='btn btn-primary' onclick={getJson('" + posizioneOLC + "')}>PLAY</button></div>");
+                                if(tipo == "guida") { //se ha acceduto una guida, non si vede il bottone play
+                                    marker.bindPopup(el.tags.name);
+                                } else if(tipo == "turista") {
+                                    marker.bindPopup(el.tags.name + "<br><div id='align'><button id='btPop' type='button' class='btn btn-primary' onclick={getJson('" + posizioneOLC + "')}>PLAY</button></div>");
+                                }
+
                             }
 
                             if (yetdiscovered == false) {

@@ -90,7 +90,7 @@
 
 #dropDownLogout {
     width: 250px;
-    height: 100px;
+    height: 145px;
     text-align: center;
 }
 
@@ -99,6 +99,11 @@
 }
 
 #tipoDiAccesso {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#tipoDiUser {    
     margin-top: 10px;
     margin-bottom: 10px;
 }
