@@ -122,6 +122,8 @@ navigator.mediaDevices.getUserMedia(constraintObj)
       chunks = [];
       let videoURL = window.URL.createObjectURL(blob);
       vidSave.src = videoURL;
+      downloadButton.href = videoURL;
+      downloadButton.download = "RecordedVideo.mp4";
   }
 })
 .catch(function(err) { 

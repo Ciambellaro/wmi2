@@ -3,14 +3,26 @@
 
 <head>
     <title>Where Am I</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin=""></script>
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7sbygkyz2S6b2m8-q6Gzfa9BrTTygtkE&libraries=places"></script>
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7sbygkyz2S6b2m8-q6Gzfa9BrTTygtkE&libraries=places"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/c921eec793.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/leaflet.extra-markers.min.css">
@@ -24,7 +36,9 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/stileIndex.css">
 
-    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+        crossorigin="anonymous"></script>
     <style>
 
     </style>
@@ -35,23 +49,27 @@
         <div id="map" class="embed-responsive embed-responsive-1by1">
             <!-- BOTTONI IN SOVRAIMPRESSIONE SULLA MAPPA -->
             <div id="RouteDiv" class="leaflet-bottom leaflet-right" style="pointer-events: auto">
-                <button type="button" class="btn btn-warning btn-circle btn-lg" id="createRoute" onClick="addRoute()" title="Crea un percorso">
+                <button type="button" class="btn btn-warning btn-circle btn-lg" id="createRoute" onClick="addRoute()"
+                    title="Crea un percorso">
                     <i class="glyphicon glyphicon-road" id="routeIcon"></i>
                 </button>
             </div>
             <div id="RouteBtn" class="leaflet-bottom leaflet-right" style="pointer-events: auto">
-                <button type="button" class="btn btn-danger btn-circle btn-lg" id="cancelRoute" onClick="cancRoute()" title="Cancella il percorso">
+                <button type="button" class="btn btn-danger btn-circle btn-lg" id="cancelRoute" onClick="cancRoute()"
+                    title="Cancella il percorso">
                     <i class="glyphicon glyphicon-remove" id="cancrouteIcon"></i>
                 </button>
             </div>
             <div id="ClipDiv" class="leaflet-bottom leaflet-left" style="pointer-events: auto">
-                <button type="button" class="btn btn-warning btn-circle btn-lg" id="createClip" onClick="addClip()" title="Aggiungi clip">
+                <button type="button" class="btn btn-warning btn-circle btn-lg" id="createClip" onClick="addClip()"
+                    title="Aggiungi clip">
                     <i class="glyphicon glyphicon-plus" id="clipIcon"></i>
                 </button>
             </div>
             <div id="LoginDiv" class="leaflet-top leaflet-right" style="pointer-events: auto">
                 <div class="dropdown">
-                    <button type="button" class="btn btn-primary btn-circle btn-lg" id="dropdownMenuButton" onClick="openLogoutWindow()" title="Impostazioni login" data-toggle="dropdown">
+                    <button type="button" class="btn btn-primary btn-circle btn-lg" id="dropdownMenuButton"
+                        onClick="openLogoutWindow()" title="Impostazioni login" data-toggle="dropdown">
                         <i class="glyphicon glyphicon glyphicon-user" id="loginIcon"></i>
                     </button>
                     <div id="dropDownLogout" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -65,7 +83,8 @@
             </div>
             <div id="listDD" class="leaflet-top leaflet-right" style="pointer-events: auto">
                 <div class="dropdown">
-                    <button type="button" class="btn btn-success btn-circle btn-lg" id="VideoListdropdownMenuButton" onClick="dropDown()" title="Lista video nei dintorni" data-toggle="dropdown">
+                    <button type="button" class="btn btn-success btn-circle btn-lg" id="VideoListdropdownMenuButton"
+                        onClick="dropDown()" title="Lista video nei dintorni" data-toggle="dropdown">
                         <i class="glyphicon glyphicon-th-list" id="videoListIcon"></i>
                     </button>
                     <div id="dropDownVideoList" class="dropdown-menu" aria-labelledby="VideoListdropdownMenuButton">
@@ -86,27 +105,32 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="clipform" name="insertClip" action="/auth" onsubmit="return validateForm()" method="POST" role="form" enctype="multipart/form-data">
+                        <form id="clipform" name="insertClip" action="/auth" onsubmit="return validateForm()"
+                            method="POST" role="form" enctype="multipart/form-data">
                             <div class="form-group">
                                 <input type="hidden" value="" name="coordin" id="coordin" />
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Titolo</label>
-                                <input type="text" class="form-control" id="titoloClip" name="titoloClip" placeholder="Inserisci il titolo della clip" required>
+                                <input type="text" class="form-control" id="titoloClip" name="titoloClip"
+                                    placeholder="Inserisci il titolo della clip" required>
                             </div>
                             <div class="form-group">
                                 <label>Scopo</label>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="what" checked>What</label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="what"
+                                            checked>What</label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="how">How</label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2"
+                                            value="how">How</label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="why">Why</label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios3"
+                                            value="why">Why</label>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -166,7 +190,8 @@
 
                             <table id="videoRec" align="center">
                                 <tr>
-                                    <td><button type="button" id="startButton" class="btn btn-success">Registra</button></td>
+                                    <td><button type="button" id="startButton" class="btn btn-success">Registra</button>
+                                    </td>
                                     <td><button type="button" id="stopButton" class="btn btn-danger">Stop</button></td>
                                 </tr>
                                 <tr>
@@ -174,7 +199,10 @@
                                     <td><video id="recording" width="160" height="120" controls></video></td>
                                 </tr>
                                 <tr>
-                                    
+                                    <td></td>
+                                    <td> 
+                                        <a id="downloadButton" class="btn btn-info">Scarica il video <i class="fas fa-download"></i></a>
+                                    </td>
                                 </tr>
                             </table>
 
@@ -192,7 +220,8 @@
             </div>
         </div>
         <!-- MODAL PER LA VISUALIZZAZIONE DEL VIDEO -->
-        <div class="modal fade" id="ModalVideoPlayer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="ModalVideoPlayer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -201,39 +230,45 @@
                         </button>
                         <!-- 16:9 aspect ratio -->
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always" allow="autoplay" allowfullscreen="allowfullscreen"></iframe>
+                            <iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always"
+                                allow="autoplay" allowfullscreen="allowfullscreen"></iframe>
                         </div>
                         <br>
-                        <button id="prevClip" type="button" class="btn btn-primary"> <i class="far fa-arrow-alt-circle-left"></i> </button>
-                        <button id="nextClip" type="button" class="btn btn-primary"> <i class="far fa-arrow-alt-circle-right"></i> </button>
-                        <div class="float-right"><button id="reachThePlace" type="button" class="btn btn-danger">Raggiungi <i class="fas fa-map-marker-alt"></i></button></div>
+                        <button id="prevClip" type="button" class="btn btn-primary"> <i
+                                class="far fa-arrow-alt-circle-left"></i> </button>
+                        <button id="nextClip" type="button" class="btn btn-primary"> <i
+                                class="far fa-arrow-alt-circle-right"></i> </button>
+                        <div class="float-right"><button id="reachThePlace" type="button"
+                                class="btn btn-danger">Raggiungi <i class="fas fa-map-marker-alt"></i></button></div>
                         <br>
                         <br>
                         <form>
-                        <div class="form-group">
-                            <label>Filtra clip per scopo (what default):</label>
-                            <select id="filtra" class="filterPurpose form-control" name="filtra">
-                                <option selected="selected" value="what">What</option>
-                                <option value="how">How</option>
-                                <option value="why">Why</option>
-                            </select>
-                        </div>
+                            <div class="form-group">
+                                <label>Filtra clip per scopo (what default):</label>
+                                <select id="filtra" class="filterPurpose form-control" name="filtra">
+                                    <option selected="selected" value="what">What</option>
+                                    <option value="how">How</option>
+                                    <option value="why">Why</option>
+                                </select>
+                            </div>
                         </form>
                         <form>
-                        <div class="form-group">
-                            <label>Filtra clip per lingua (ita default):</label>
-                            <select id="filtraLan" class="filterLan form-control" name="filtraLan">
-                                <option selected="selected" value="ita">Ita</option>
-                                <option value="eng">Eng</option>
-                                <option value="deu">Deu</option>
-                                <option value="fra">Fra</option>
-                                <option value="esp">Esp</option>
-                            </select>
-                        </div>
+                            <div class="form-group">
+                                <label>Filtra clip per lingua (ita default):</label>
+                                <select id="filtraLan" class="filterLan form-control" name="filtraLan">
+                                    <option selected="selected" value="ita">Ita</option>
+                                    <option value="eng">Eng</option>
+                                    <option value="deu">Deu</option>
+                                    <option value="fra">Fra</option>
+                                    <option value="esp">Esp</option>
+                                </select>
+                            </div>
                         </form>
                         <div>
-                            <button id="btnPrev" type="button" class="btn btn-primary" onclick="prevRoute()"> <i class="fas fa-angle-left"></i> Luogo precedente</button>
-                            <button id="btnNext" type="button" class="btn btn-primary" onclick="nextRoute()">Prossimo luogo <i class="fas fa-angle-right"></i> </button>
+                            <button id="btnPrev" type="button" class="btn btn-primary" onclick="prevRoute()"> <i
+                                    class="fas fa-angle-left"></i> Luogo precedente</button>
+                            <button id="btnNext" type="button" class="btn btn-primary" onclick="nextRoute()">Prossimo
+                                luogo <i class="fas fa-angle-right"></i> </button>
                         </div>
                     </div>
                 </div>
@@ -241,17 +276,17 @@
         </div>
         <div id="noCLipModal" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                <div class="modal-body">
-                  <p id="err"><b>NESSUNA CLIP PER QUESTO LUOGO.</b></p>
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-body">
+                        <p id="err"><b>NESSUNA CLIP PER QUESTO LUOGO.</b></p>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-        
+        </div>
+
     </div>
 
 </body>
