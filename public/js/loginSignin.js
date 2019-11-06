@@ -1,6 +1,10 @@
-//apertura modal login al caricamento della pagina
-$(window).on('load', function () {
-    $('#modalLoginForm').modal({ backdrop: 'static', keyboard: false }); //modal viene mostrato e non può scomparire
+
+$("#btnLogin").on('click', function () {
+    $('#modalLoginForm').modal('show'); 
+});
+
+$("#btnSignUp").on('click', function () {
+    $('#modalRegisterForm').modal('show'); 
 });
 
 // gestione form di login
@@ -53,10 +57,9 @@ $("#regForm").submit(function (event) {
         } else if(response.message == "err_2"){
             $("#divErrorReg").append("Conferma password non corrispondente!");
         } else {
-            $('#modalRegisterForm').modal('hide');
+            $("#divErrorReg").append("Utente registrato con successo."); 
+            $("#divErrorReg").append("Esegui l'accesso con le credenziali appena create.");
             $("#divError").empty();
-            $("#divError").append("Utente registrato con successo."); 
-            $("divError").append("Esegui l'accesso con le credenziali appena create.");
         }
     });
 });
