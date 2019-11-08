@@ -3,6 +3,18 @@
     height: 100vh;
 }
 
+#center {
+    text-align: center;
+}
+
+#tipoDiUser{
+    font-weight: 600;
+}
+
+#tipoDiAccesso{
+    font-weight: 600;
+}
+
 #FiltraMarkerDiv {
     position: absolute;
     top: 40px;
@@ -100,8 +112,9 @@
     text-align: center;
 }
 
-.dropdown-divider {   /*divisore all'interno del dropdown Logout*/
+.dropdown-divider {   /*divisore all'interno del dropdown */
     margin: 10px;
+    text-align: center;
 }
 
 #tipoDiUser {    /*USERNAME: tizio*/

@@ -50,17 +50,25 @@
             <!-- BOTTONI IN SOVRAIMPRESSIONE SULLA MAPPA -->
             <div id="FiltraMarkerDiv" class="leaflet-top leaflet-left" style="pointer-events: auto">
                 <div class="dropdown">
-                    <button type="button" class="btn btn-info btn-circle btn-lg" id="filtraMarkerButton" title="Filtra i marker da visualizzare" data-toggle="dropdown">
+                    <button type="button" class="btn btn-info btn-circle btn-lg" id="filtraMarkerButton"
+                        title="Filtra i marker da visualizzare" data-toggle="dropdown">
                         <i class="glyphicon glyphicon-map-marker" id="filtraMarkerIcon"></i>
                     </button>
                     <div id="dropDownFiltra" class="dropdown-menu" aria-labelledby="filtraMarkerButton">
-                        <input type="checkbox" name="filtraMark" value="hotel" checked> Hotel<br>
-                        <input type="checkbox" name="filtraMark" value="museum" checked> Musei<br>
-                        <input type="checkbox" name="filtraMark" value="attraction" checked> Monumenti<br>
-                        <input type="checkbox" name="filtraMark" value="artwork" checked> Artwork<br>
-                        <input type="checkbox" name="filtraMark" value="information" checked> Punti informazione<br>
+                        <div class="form-group form-check">
+                            <input id="chotel" type="checkbox" name="filtraMark" value="hotel" checked>
+                            <label class="form-check-label" for="chotel">Hotel</label><br>
+                            <input id="cmuseum" type="checkbox" name="filtraMark" value="museum" checked>
+                            <label class="form-check-label" for="cmuseum">Musei</label><br>
+                            <input id="cattraction" type="checkbox" name="filtraMark" value="attraction" checked>
+                            <label class="form-check-label" for="cattraction">Monumenti</label><br>
+                            <input id="cartwork" type="checkbox" name="filtraMark" value="artwork" checked>
+                            <label class="form-check-label" for="cartwork">Artwork</label><br>
+                            <input id="cinformation" type="checkbox" name="filtraMark" value="information" checked>
+                            <label class="form-check-label" for="cinformation">Punti Informazione</label>
+                        </div>
                         <div class="dropdown-divider"></div>
-                        <button type="button" class="btn btn-info" id="filtriaml">Filtra</button>
+                        <div id="center"><button type="button" class="btn btn-info" id="filtriaml">Filtra</button></div>
                     </div>
                 </div>
             </div>
@@ -208,7 +216,8 @@
                                 <tr>
                                     <td><button type="button" id="startButton" class="btn btn-success">Registra</button>
                                     </td>
-                                    <td><button type="button" id="stopButton" class="btn btn-danger" disabled>Stop</button></td>
+                                    <td><button type="button" id="stopButton" class="btn btn-danger"
+                                            disabled>Stop</button></td>
                                 </tr>
                                 <tr>
                                     <td><video id="preview" width="160" height="120" autoplay muted></video></td>
@@ -216,8 +225,9 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td> 
-                                        <a id="downloadButton" class="btn btn-info">Scarica il video <i class="fas fa-download"></i></a>
+                                    <td>
+                                        <a id="downloadButton" class="btn btn-info">Scarica il video <i
+                                                class="fas fa-download"></i></a>
                                     </td>
                                 </tr>
                             </table>
