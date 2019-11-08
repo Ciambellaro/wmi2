@@ -80,7 +80,22 @@ function onLocationFound(e) {
 
 
 function onLocationError(e) {
-    //alert(e.message);
+    layerGroupPos.clearLayers();
+    var markerDraggable;
+    if(position) {
+        marker = L.marker(position, {
+            draggable: true
+        }).addTo(map) 
+    } else {
+        marker = L.marker([map.getCenter().lat,map.getCenter().lng], {
+            draggable: true
+        }).addTo(map) 
+    }
+
+    marker.addTo(layerGroupPos);
+    marker.setBouncingOptions({
+        bounceHeight: 5
+    }).bounce();
 }
 
 function nextRoute() {
@@ -253,9 +268,13 @@ map.on('moveend', function (e) {
                     if (el.tags) {
                         if (el.tags.name && el.tags.tourism && el.tags.tourism != "guest_house") {
                             exceed += 1;
+
+                            /*
                             if (exceed > 35) {
                                 return false;
                             }
+                            */
+                            
                             //console.log(el.tags);
                             //creazione del marker per ogni singolo punto di interesse
                             var markerLocation = new L.LatLng(el.lat, el.lon);
