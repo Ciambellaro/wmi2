@@ -3,6 +3,12 @@
     height: 100vh;
 }
 
+#FiltraMarkerDiv {
+    position: absolute;
+    top: 40px;
+    left: 50px;
+}
+
 #createRoute {
     position: absolute;
     bottom: 40px;

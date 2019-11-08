@@ -23,28 +23,13 @@ var discovered = [];
 var user = sessionStorage.getItem("user");
 var tipo = sessionStorage.getItem("tipo");
 
-$(document).ready(function() {
-    document.getElementById('tipoDiUser').innerHTML = "USERNAME: " + user;
-    if(tipo == "guida") {
+$(document).ready(function () {
+    document.getElementById('tipoDiUser').innerHTML = "Ciao, " + user;
+    if (tipo == "guida") {
         document.getElementById('tipoDiAccesso').innerHTML = "Accesso effettuato come GUIDA";
         document.getElementById('RouteDiv').innerHTML = "";
         document.getElementById('listDD').innerHTML = "";
-    } else if(tipo == "turista") {
-        document.getElementById('tipoDiAccesso').innerHTML = "Accesso effettuato come TURISTA";
-        document.getElementById('ClipDiv').innerHTML = "";
-    }
-});
-
-var user = sessionStorage.getItem("user");
-var tipo = sessionStorage.getItem("tipo");
-
-$(document).ready(function() {
-    document.getElementById('tipoDiUser').innerHTML = "USERNAME: " + user;
-    if(tipo == "guida") {
-        document.getElementById('tipoDiAccesso').innerHTML = "Accesso effettuato come GUIDA";
-        document.getElementById('RouteDiv').innerHTML = "";
-        document.getElementById('listDD').innerHTML = "";
-    } else if(tipo == "turista") {
+    } else if (tipo == "turista") {
         document.getElementById('tipoDiAccesso').innerHTML = "Accesso effettuato come TURISTA";
         document.getElementById('ClipDiv').innerHTML = "";
     }
@@ -65,7 +50,7 @@ function onLocationFound(e) {
     var marker = L.marker(e.latlng);
     marker.addTo(layerGroupPos);
     marker.setBouncingOptions({
-      bounceHeight: 5
+        bounceHeight: 5
     }).bounce();
 
     var circle = L.circle(e.latlng, radius);
@@ -100,7 +85,7 @@ function onLocationError(e) {
 
 function nextRoute() {
 
-    if(currentRoute != null){
+    if (currentRoute != null) {
         currentRoute.spliceWaypoints(0, routes.length);
         currentRoute.setWaypoints([]);
     }
@@ -119,13 +104,13 @@ function nextRoute() {
             }
         }).addTo(map);
 
-        var print = "<p><b>TAPPA N° "+ indexRoute +" DEL PERCORSO.</b></p>"
+        var print = "<p><b>TAPPA N° " + indexRoute + " DEL PERCORSO.</b></p>"
         $('.leaflet-routing-container.leaflet-bar.leaflet-control').prepend(print);
-    } 
-    if(indexRoute + 1 >= routes.length) {
+    }
+    if (indexRoute + 1 >= routes.length) {
         $("#btnNext").attr("disabled", true);
     }
-    if(indexRoute == 1){
+    if (indexRoute == 1) {
         $("#btnPrev").attr("disabled", true);
     } else {
         $("#btnPrev").attr("disabled", false);
@@ -133,13 +118,13 @@ function nextRoute() {
 
 }
 
-function prevRoute(){
+function prevRoute() {
     $("#btnNext").attr("disabled", false);
-    if(currentRoute != null){
+    if (currentRoute != null) {
         currentRoute.spliceWaypoints(0, routes.length);
         currentRoute.setWaypoints([]);
     }
-    if(indexRoute-1 > 0){
+    if (indexRoute - 1 > 0) {
         $('.leaflet-routing-container.leaflet-bar.leaflet-control').remove();
         $('#ModalVideoPlayer').modal('hide');
         var partRoute = [];
@@ -155,10 +140,10 @@ function prevRoute(){
             }
         }).addTo(map);
 
-        var print = "<p><b>TAPPA N° "+ indexRoute +" DEL PERCORSO.</b></p>"
+        var print = "<p><b>TAPPA N° " + indexRoute + " DEL PERCORSO.</b></p>"
         $('.leaflet-routing-container.leaflet-bar.leaflet-control').prepend(print);
     }
-    if(indexRoute = 1){
+    if (indexRoute = 1) {
         $("#btnPrev").attr("disabled", true);
     }
 }
@@ -234,6 +219,9 @@ function backToLogin() {
 map.on('locationfound', onLocationFound);
 map.on('locationerror', onLocationError);
 
+//var markerLocation;
+var lattt;
+var lnggg;
 
 map.on('moveend', function (e) {
     clipAround = [];
@@ -263,7 +251,7 @@ map.on('moveend', function (e) {
                 $.each(data.elements, function (index, el) {
                     console.log(el);
                     if (el.tags) {
-                        if (el.tags.name && el.tags.tourism && el.tags.tourism != "hotel" && el.tags.tourism != "guest_house" && el.tags.tourism != "information") {
+                        if (el.tags.name && el.tags.tourism && el.tags.tourism != "guest_house") {
                             exceed += 1;
                             if (exceed > 35) {
                                 return false;
@@ -283,35 +271,55 @@ map.on('moveend', function (e) {
                                 clipAround.push(posizioneOLC + "-" + el.tags.name);
                             }
 
-                            if (el.tags.tourism == 'attraction') {
+                            if (el.tags.tourism == 'attraction' && $('input[value=attraction]').prop('checked')) {
                                 var redMarker = L.ExtraMarkers.icon({
                                     icon: 'fa-archway',
                                     markerColor: 'orange',
+                                    className: 'attractionIcon',
                                     shape: 'square',
                                     prefix: 'fa'
                                 });
-                            } else if (el.tags.tourism == 'museum') {
+                            } else if (el.tags.tourism == "hotel" && $('input[value=hotel]').prop('checked')) {
+                                var redMarker = L.ExtraMarkers.icon({
+                                    icon: 'fa-bed',
+                                    markerColor: 'blue',
+                                    className: 'hotelIcon',
+                                    shape: 'square',
+                                    prefix: 'fa'
+                                });
+                            } else if (el.tags.tourism == "information" && $('input[value=information]').prop('checked')) {
+                                var redMarker = L.ExtraMarkers.icon({
+                                    icon: 'fa-info',
+                                    markerColor: 'white',
+                                    className: 'informationIcon',
+                                    iconColor: 'black',
+                                    shape: 'square',
+                                    prefix: 'fa'
+                                });
+                            } else if (el.tags.tourism == 'museum' && $('input[value=museum]').prop('checked')) {
                                 var redMarker = L.ExtraMarkers.icon({
                                     icon: 'fa-landmark',
                                     markerColor: 'red',
+                                    className: 'museumIcon',
                                     shape: 'square',
                                     prefix: 'fa'
                                 });
-                            } else if (el.tags.tourism == 'artwork') {
+                            } else if (el.tags.tourism == 'artwork' && $('input[value=artwork]').prop('checked')) {
                                 var redMarker = L.ExtraMarkers.icon({
                                     icon: 'fa-monument',
                                     markerColor: 'yellow',
+                                    className: 'artworkIcon',
                                     shape: 'square',
                                     prefix: 'fa'
                                 });
-                            } else {
+                            } /*else if (el.tags.tourism != 'artwork' && el.tags.tourism != 'museum' && el.tags.tourism != "information" && el.tags.tourism != "hotel" && el.tags.tourism != 'attraction') {
                                 var redMarker = L.ExtraMarkers.icon({
                                     icon: 'fa-coffee',
                                     markerColor: 'green-light',
                                     shape: 'square',
                                     prefix: 'fa'
                                 });
-                            }
+                            }*/
 
                             var marker = L.marker(markerLocation, {
                                 icon: redMarker
@@ -330,27 +338,35 @@ map.on('moveend', function (e) {
                             }
 
                             if (el.tags["addr:city"] && el.tags["addr:country"] && el.tags["addr:housenumber"] && el.tags["addr:postcode"] && el.tags["addr:street"]) {
-                                if(tipo == "guida") { //se ha acceduto una guida, non si vede il bottone play
+                                if (tipo == "guida") { //se ha acceduto una guida, non si vede il bottone play
                                     marker.bindPopup(el.tags.name + "<br>" + el.tags["addr:street"] + ", " + el.tags["addr:housenumber"] + ", " + el.tags["addr:postcode"] + " " + el.tags["addr:city"] + " " + el.tags["addr:country"]);
-                                } else if(tipo == "turista") {
-                                    marker.bindPopup(el.tags.name + "<br>" + el.tags["addr:street"] + ", " + el.tags["addr:housenumber"] + ", " + el.tags["addr:postcode"] + " " + el.tags["addr:city"] + " " + el.tags["addr:country"] + "<br><div id='align'><button id='btPop' type='button' class='btn btn-primary' onclick={getJson('" + posizioneOLC + "')}>PLAY</button></div>");
+                                } else if (tipo == "turista") {
+                                    marker.bindPopup(el.tags.name + "<br>" + el.tags["addr:street"] + ", " + el.tags["addr:housenumber"] + ", " + el.tags["addr:postcode"] + " " + el.tags["addr:city"] + " " + el.tags["addr:country"] + "<br><div id='align'><button id='btPop' type='button' class='btn btn-primary' onclick={getJson('" + posizioneOLC + "')}>PLAY</button></div><br><div id='align'><button id='btVis' type='button' class='btn btn-primary' onclick='yetVisited()'>V</button></div>");
                                 }
                             } else {
-                                if(tipo == "guida") { //se ha acceduto una guida, non si vede il bottone play
+                                if (tipo == "guida") { //se ha acceduto una guida, non si vede il bottone play
                                     marker.bindPopup(el.tags.name);
-                                } else if(tipo == "turista") {
-                                    marker.bindPopup(el.tags.name + "<br><div id='align'><button id='btPop' type='button' class='btn btn-primary' onclick={getJson('" + posizioneOLC + "')}>PLAY</button></div>");
+                                } else if (tipo == "turista") {
+                                    marker.bindPopup(el.tags.name + "<br><div id='align'><button id='btPop' type='button' class='btn btn-primary' onclick={getJson('" + posizioneOLC + "')}>PLAY</button></div><br><div id='align'><button id='btVis' type='button' class='btn btn-primary' onclick='yetVisited()'>V</button></div>");
                                 }
                             }
 
                             if (yetdiscovered == false) {
                                 marker.addTo(layerGroup);
+                                $(marker._icon).addClass(el.tags.tourism);
                                 discovered.push(placename);
                                 marker.bounce(1);
                                 console.log("****SCOPERTO: " + placename + " ****");
                                 console.log("marker #" + exceed + " " + placename);
 
+
                                 marker.on('click', function (e) { //quando clicchi su un marker
+                                    if(!editing && !addClipMode) {
+                                        var latlng = map.mouseEventToLatLng(e.originalEvent);
+                                        //alert(latlng.lat + ', ' + latlng.lng);
+                                        lattt = el.lat;
+                                        lnggg = el.lon;
+                                    }
                                     if (editing) {
                                         routes.push(markerLocation);
                                         $.toast({
@@ -400,6 +416,30 @@ map.on('moveend', function (e) {
     });
 });
 
+
+function yetVisited() {
+    //console.log("posizione: " + markerLocation);
+    var redMarker = L.ExtraMarkers.icon({
+        icon: 'fa-check',
+        markerColor: 'green-dark',
+        shape: 'square',
+        prefix: 'fa'
+    });
+    var markLoc = new L.LatLng(lattt, lnggg);
+    var marker = L.marker(markLoc, {
+        icon: redMarker
+    });
+    marker.addTo(layerGroup);
+    marker.bounce(1);
+    $.toast({
+        heading: 'Visitato',
+        text: 'Marker impostato come già visitato',
+        showHideTransition: 'slide',
+        position: 'bottom-center',
+        icon: 'success'
+    });
+}
+
 //var bbox = map.getView().calculateExtent(olmap.getSize());
 //console.log(bbox);
 
@@ -442,6 +482,40 @@ function dropDown() {
     document.getElementById("dropDownVideoList").innerHTML = "<label>NESSUNA CLIP DISPONIBILE NELLE VICINANZE</label>";
     console.log("FINE FUNZ");
 }
+
+//filtra i marker da visualizzare sulla mappa
+$("#filtriaml").on('click', function () {
+    
+    if ($('input[value=hotel]').prop('checked')) {
+        $('.hotelIcon').fadeIn('slow');
+    } else { 
+        $('.hotelIcon').fadeOut('slow');        
+    }    
+
+    if ($('input[value=museum]').prop('checked')) {
+        $('.museumIcon').fadeIn('slow');
+    } else { 
+        $('.museumIcon').fadeOut('slow');
+    }    
+
+    if ($('input[value=attraction]').prop('checked')) {
+        $('.attractionIcon').fadeIn('slow');
+    } else { 
+        $('.attractionIcon').fadeOut('slow');
+    }    
+
+    if ($('input[value=artwork]').prop('checked')) {
+        $('.artworkIcon').fadeIn('slow');
+    } else { 
+        $('.artworkIcon').fadeOut('slow');
+    }    
+
+    if ($('input[value=information]').prop('checked')) {
+        $('.informationIcon').fadeIn('slow');
+    } else { 
+        $('.informationIcon').fadeOut('slow');
+    }
+});
 
 
 
